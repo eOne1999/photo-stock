@@ -1,2 +1,3 @@
 # photo-stock
-The best  place to be a photographer online.
+
+The best place to be a photographer online.
