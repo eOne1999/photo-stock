@@ -1,0 +1,21 @@
+.header {
+  display: flex;
+  align-items: center;
+  height: 100px;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.header__nav {
+  display: flex;
+  gap: 20px;
+  font-size: 1.6rem;
+
+  & a:hover {
+    color: $color-primary;
+  }
+}
+
+.logo__img {
+  width: 200px;
+}
