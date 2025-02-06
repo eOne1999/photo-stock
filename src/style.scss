@@ -1,12 +1,12 @@
 // Abstract
-@import "./sass/constants";
-@import "./sass/mixins";
+@use "./sass/constants";
+@use "./sass/mixins";
 
 // Base
-@import "./sass/base";
-@import './sass/normalize';
+@use "./sass/base";
+@use './sass/normalize';
 
 // Components
-@import "./components/Header/header";
-@import "./components/Cards/cards";
-@import "./components/SearchBar/searchBar";
+@use "./components/Header/header";
+@use "./components/Cards/cards";
+@use "./components/SearchBar/searchBar";

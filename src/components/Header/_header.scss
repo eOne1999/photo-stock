@@ -1,3 +1,5 @@
+@use '../../sass/constants' as const;
+
 .header {
   display: flex;
   align-items: center;
@@ -12,7 +14,7 @@
   font-size: 1.6rem;
 
   & a:hover {
-    color: $color-primary;
+    color: const.$color-primary;
   }
 }
 

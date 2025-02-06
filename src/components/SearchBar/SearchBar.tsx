@@ -22,15 +22,18 @@ export default function SearchBar({ setSearchValue }: TSearch) {
   };
 
   return (
-    <input
-      onChange={handleInputSearch}
-      onKeyDown={(e) => {
-        handleSearch(e);
-      }}
-      type="search"
-      className="search-bar"
-      placeholder="Search"
-      value={currSearch}
-    />
+    <>
+      <input
+        onChange={handleInputSearch}
+        onKeyDown={(e) => {
+          handleSearch(e);
+        }}
+        type="search"
+        className="search-bar"
+        placeholder="Search"
+        value={currSearch}
+      />
+      <button onClick={() => setSearchValue(currSearch)}>Search</button>
+    </>
   );
 }

@@ -1,3 +1,6 @@
+@use 'constants' as const;
+@use 'mixins' as m;
+
 html {
   font-size: 10px;
 }
@@ -5,8 +8,8 @@ html {
 body {
   font-size: 1.4rem;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
-  color: $color-text;
-  background: $color-bg-primary;
+  color: const.$color-text;
+  background: const.$color-bg-primary;
 }
 
 *,
@@ -40,15 +43,25 @@ a:hover {
   margin: 0 auto;
   padding: 0 60px;
 
-  @include media-laptop {
+  @include m.media-laptop {
     padding: 0 40px;
   }
 
-  @include media-tablet {
+  @include m.media-tablet {
     padding: 0 30px;
   }
 
-  @include media-mobile {
+  @include m.media-mobile {
     padding: 0 20px;
   }
+}
+
+button {
+  color: const.$color-bg-add;
+  background: const.$color-primary;
+  padding-left: 20px;
+  padding-right: 20px;
+  border-radius: 8px;
+  border: 0;
+  cursor: pointer;
 }

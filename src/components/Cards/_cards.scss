@@ -1,3 +1,5 @@
+@use '../../sass/constants' as const;
+
 .cards {
   display: flex;
   flex-wrap: wrap;
@@ -8,7 +10,7 @@
 
 .card {
   height: 300px;
-  background-color: $color-bg-add;
+  background-color: const.$color-bg-add;
   flex-grow: 1;
   transition: .5s;
   position: relative;
@@ -41,13 +43,13 @@
 }
 
 .card__author {
-  color: $color-text-light;
+  color: const.$color-text-light;
   font-size: 1.5rem;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 
   &:hover {
-    color: $color-primary;
+    color: const.$color-primary;
   }
 }

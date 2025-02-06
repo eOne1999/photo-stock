@@ -1,55 +1,13 @@
 import React from 'react';
 
-export type TCountry = {
-  name: string;
-  dial_code: string;
-  code: string;
-  flag: string;
-};
-
-export type TFormData = {
-  author: string;
-  photographer: string;
-  date: string;
-  country: string;
-  image: string | undefined;
-  file: FileList;
-  confirmation: boolean;
-};
-
 export type TCard = {
   card: RespPhotosSearch;
-};
-
-export type TFormCard = {
-  author: string;
-  image: string | undefined;
-  country: string;
-  date: string | undefined;
-  photographer: string | undefined;
-};
-
-export type TPopup = {
-  active: boolean;
-  setActive: React.Dispatch<React.SetStateAction<boolean>>;
-  data: RespPhotosSearch | string;
-};
-
-export type TForm = {
-  submitData: TFormData[];
-  setSubmitData: React.Dispatch<React.SetStateAction<TFormData[]>>;
-  popupActive: boolean;
-  setPopupActive: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 export type TSearch = {
   searchValue: string;
   setSearchValue: React.Dispatch<React.SetStateAction<string>>;
 };
-
-export interface ISearch {
-  searchValue: string;
-}
 
 export interface GetResp {
   options: object;
