@@ -3,8 +3,8 @@
 @use "./sass/mixins";
 
 // Base
-@use "./sass/base";
 @use './sass/normalize';
+@use "./sass/base";
 
 // Components
 @use "./components/Header/header";

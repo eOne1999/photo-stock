@@ -2,10 +2,16 @@ import { useEffect, useState } from 'react';
 import AppController from '../../controller/controller';
 import { RespFromGet, RespPhotosSearch, TSearch } from '../../types';
 import Card from '../Card/Card';
+import spinner from '../../assets/spinner.gif';
 
 function Cards({ searchValue }: TSearch) {
   const [photos, setPhotos] = useState<RespPhotosSearch[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  if (error) {
+    throw error;
+  }
 
   useEffect(() => {
     setIsLoading(true);
@@ -42,18 +48,27 @@ function Cards({ searchValue }: TSearch) {
         }
         throw Error('Failed to get data');
       });
-    })();
+    })().catch((err) => setError(err));
   }, [searchValue]);
+
+  function handleClick() {
+    setError(() => {
+      throw new Error('Error by button');
+    });
+  }
 
   return (
     <>
+      <button onClick={handleClick}>Throw error</button>
       {searchValue && <p>Results for: {searchValue}</p>}
-      {isLoading && <p>Loading...</p>}
-      {!isLoading && (
-        <div className="cards">
-          {photos && photos.map((elem) => <Card key={elem.id} card={elem} />)}
-        </div>
-      )}
+      <div className="cards">
+        {isLoading && <img src={spinner} alt="loader" />}
+        {!isLoading && (
+          <>
+            {photos && photos.map((elem) => <Card key={elem.id} card={elem} />)}
+          </>
+        )}
+      </div>
     </>
   );
 }

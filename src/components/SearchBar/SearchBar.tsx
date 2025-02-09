@@ -1,4 +1,4 @@
-import { KeyboardEvent, useState } from 'react';
+import { useState } from 'react';
 import { TSearch } from '../../types';
 
 export default function SearchBar({ setSearchValue }: TSearch) {
@@ -6,34 +6,28 @@ export default function SearchBar({ setSearchValue }: TSearch) {
     localStorage.getItem('searchValue') || ''
   );
 
-  const handleInputSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setCurrSearch(e.target.value);
-    localStorage.setItem('searchValue', e.target.value.toString());
-
-    if (e.target.value === '') {
-      setSearchValue(e.target.value);
-    }
-  };
-
-  const handleSearch = (e: KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === 'Enter') {
-      setSearchValue(e.currentTarget.value);
-    }
+  const handleClick = (value: string) => {
+    const string = value.trim().replace(/ +/g, ' ');
+    setCurrSearch(string);
+    setSearchValue(string);
+    localStorage.setItem('searchValue', string);
   };
 
   return (
     <>
       <input
-        onChange={handleInputSearch}
+        onChange={(e) => setCurrSearch(e.target.value)}
         onKeyDown={(e) => {
-          handleSearch(e);
+          if (e.key === 'Enter') {
+            handleClick(e.currentTarget.value);
+          }
         }}
         type="search"
         className="search-bar"
         placeholder="Search"
         value={currSearch}
       />
-      <button onClick={() => setSearchValue(currSearch)}>Search</button>
+      <button onClick={() => handleClick(currSearch)}>Search</button>
     </>
   );
 }

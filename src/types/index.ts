@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 
 export type TCard = {
   card: RespPhotosSearch;
@@ -98,3 +98,12 @@ export type RespPhotosSearch = {
   url_l?: string;
   url_o?: string;
 };
+
+export interface ErrorProps {
+  children?: ReactNode;
+}
+
+export interface ErrorState {
+  error: null | Error;
+  errorInfo: null | { componentStack: string };
+}

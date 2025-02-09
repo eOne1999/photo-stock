@@ -11,27 +11,21 @@ class Loader {
   }
 
   async getResp<T>({ options }: GetResp): Promise<RespFromGet<T>> {
-    try {
-      const res = await fetch(this.makeUrl(options), { method: 'GET' });
-      if (!res.ok) {
-        if (res.status === 401 || res.status === 404)
-          console.log(
-            `Sorry, but there is ${res.status} error: ${res.statusText}`
-          );
-        throw Error(res.statusText);
-      }
-
-      const data = (await res.json()) as RespFromGet<T>;
-      if (data.stat !== 'ok') {
-        console.log(data.message);
-        throw Error(data.message);
-      }
-
-      return data;
-    } catch (err) {
-      console.log(err);
-      throw Error();
+    const res = await fetch(this.makeUrl(options), { method: 'GET' });
+    if (!res.ok) {
+      if (res.status === 401 || res.status === 404)
+        console.log(
+          `Sorry, but there is ${res.status} error: ${res.statusText}`
+        );
+      throw Error(res.statusText);
     }
+
+    const data = (await res.json()) as RespFromGet<T>;
+    if (data.stat !== 'ok') {
+      throw Error(data.message);
+    }
+
+    return data;
   }
 
   makeUrl(options: object | undefined): string {
